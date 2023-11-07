@@ -4,6 +4,9 @@
     --light1: #d4d1ce;
     --light2: #829285;
     --bright1: #fd8945;
+    --sans: 'Montserrat', sans-serif;
+    --marker: 'Caveat Brush', cursive;
+    --serif: 'Merriweather', serif;
 
 }
 
@@ -11,9 +14,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: var(--sans);
     list-style: none;
     text-decoration: none;
+
 }
 
 html {

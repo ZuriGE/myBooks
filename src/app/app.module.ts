@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -8,7 +9,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { FormRegisterComponent } from './component/form-register/form-register.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
+import { ProfileComponent } from './pages/profile/profile.component'
 
 
 @NgModule({
@@ -19,12 +21,14 @@ import { RouterModule } from '@angular/router'
     HomeComponent,
     FormRegisterComponent,
     RegisterComponent,
+    ProfileComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
