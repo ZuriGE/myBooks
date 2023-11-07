@@ -1,56 +1,63 @@
 .header {
     background-color: var(--dark1);
+
     color: var(--dark1);
     height: 70px;
     display: flex;
     align-items: center;
-    padding: 0 5rem;
+
+    width: 100%;
 }
 
-.header__logo {
-    height: 50px;
-    align-self: center;
+.pcOnly {
+    display: none;
 }
 
 nav {
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: [x0] 1fr [x1] 1fr [x2] 1fr [x3] 1fr [x4] 6fr[x5];
-
-}
-
-.nav__link {
-    height: 100%;
-    font-size: 1.5rem;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: 600;
     display: flex;
+    justify-content: space-between;
+    padding-left: 3vw;
+    padding-right: 3vw;
     align-items: center;
-    justify-content: center;
+
+}
+
+button {
+    border: none;
+    background-color: transparent;
     cursor: pointer;
+}
+
+
+.header__logo {
+    height: 50px;
+    align-self: center;
+
+}
+
+.fa-solid {
+    color: var(--bright1);
+    font-size: 32px;
+}
+
+ul.mobileOnly {
+
+    padding: 0 3rem;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: var(--dark1);
+}
+
+.mobileOnly li {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+
+.mobileOnly li a {
     color: var(--light1)
-}
-
-.nav img {
-    grid-column: x0/x1;
-    justify-self: flex-end;
-}
-
-.nav__link--home {
-    grid-column: x1/x2;
-}
-
-.nav__link--reg {
-    grid-column: x2/x3;
-}
-
-.nav__link:hover {
-    color: var(--dark1);
-    background-color: var(--light1);
-    border-left: 8px solid var(--bright1);
-    border-right: 8px solid var(--dark2);
-    animation: navLinkHover 0.5s linear;
 }
 
 @keyframes navLinkHover {
@@ -72,6 +79,65 @@ nav {
 
     100% {
         border-width: 8px;
+    }
+
+}
+
+@media(min-width:769px) {
+    .mobileOnly {
+        display: none
+    }
+
+    .pcOnly {
+        display: flex;
+
+    }
+
+
+
+    nav {
+
+        justify-content: flex-start;
+        padding: 0 7rem;
+    }
+
+    ul {
+        display: flex;
+        padding: 0 3rem;
+        position: relative
+    }
+
+    li {
+
+        height: 70px;
+
+    }
+
+    a {
+        height: 70px;
+
+        width: clamp(100px, 200px, 250px);
+        padding: 0 0.5rem;
+    }
+
+    .nav__link {
+        height: 100%;
+        font-size: 1.5rem;
+
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--light1)
+    }
+
+    a:hover {
+        color: var(--dark1);
+        background-color: var(--light1);
+        border-left: 8px solid var(--bright1);
+        border-right: 8px solid var(--dark2);
+        animation: navLinkHover 0.5s linear;
     }
 
 }

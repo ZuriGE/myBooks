@@ -21,6 +21,28 @@ h3 {
 
 }
 
+.main--cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.img--cont {
+    width: 90%;
+    aspect-ratio: 46/36;
+    background-color: var(--light1);
+    background-image: url("/assets/img/home0.png");
+    background-size: contain;
+    background-blend-mode: darken;
+}
+
+p {
+    padding: 1rem 0;
+    font-size: 1.2rem;
+}
+
 .pcOnly {
     display: none;
 }
@@ -35,18 +57,6 @@ h3 {
     text-align: center;
 }
 
-.main p {
-    font-size: 1.3rem;
-    padding-top: 1rem;
-    ;
-}
-
-.deco {
-
-    width: 100%;
-
-    border-radius: 10px;
-}
 
 .separator--mobile {
     height: 1px;
@@ -114,9 +124,19 @@ h2 span {
     -webkit-overflow-scrolling: touch;
 }
 
-@media(min-width:576px) {
+@media(min-width:769px) {
     .main {
-        width: 80%
+        width: 80%;
+        padding-bottom: 5rem;
+
+
+    }
+
+    .main--cont {
+        display: grid;
+        grid-gap: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(min(90%, max(350px, 90%/2)), 1fr));
+        padding-right: 5rem;
     }
 
     .mobileOnly {
@@ -128,39 +148,54 @@ h2 span {
     }
 
     .main h1 {
-        font-size: 4rem;
+        font-size: 8rem;
         display: block;
-        text-align: left;
+        text-align: end;
+        padding-bottom: 0;
+        align-self: end;
+
     }
 
-    .cont--main {
-        width: 100%;
-        display: flex;
-        flex: none;
+    .main p {
+        font-size: 2rem;
+        justify-self: center;
+        align-self: center;
     }
 
-    .cont--main--txt {
-        padding: 0 2rem;
-    }
-
-    .cont--main--txt p {
-        font-size: 1.7rem;
+    .img--cont {
+        justify-self: center;
+        align-self: center;
+        border-radius: 5px;
     }
 
     .pcOnly div {
         display: flex
     }
 
-    .deco {
-        width: 40%;
-        flex-grow: 3;
-    }
 
     .home__cont--ext {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        padding: 0 10vw;
+        padding: 0 10rem;
+
+    }
+
+    .img2 {
+        background-image: url("/assets/img/home1.jpg");
+        background-size: cover;
+
+    }
+
+    .img3 {
+        background-image: url("/assets/img/home3.jpg");
+        background-size: cover;
+
+    }
+
+    .img4 {
+        background-image: url("/assets/img/home4.jpg");
+        background-size: cover;
 
     }
 
@@ -187,6 +222,7 @@ h2 span {
         min-width: 350px;
         padding: 3rem;
         display: block;
+        background-color: var(--light2);
 
     }
 
@@ -197,7 +233,7 @@ h2 span {
     }
 
     .article {
-        background-color: var(--light2);
+        background-color: var(--light1);
         padding: 0.7rem;
         margin: 2.5rem 0;
         display: flex;
@@ -205,7 +241,7 @@ h2 span {
         align-items: center;
         border-radius: 10px;
         box-shadow: 0px 10px 45px 9px rgba(0, 0, 0, 0.2);
-        border: 1px solid rgb(141, 145, 143)
+        border: none
     }
 
     .article img {

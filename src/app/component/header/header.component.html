@@ -1,8 +1,28 @@
 <header class="header">
   <nav>
+    <button (click)="isVisible = !isVisible">
+      <i class="mobileOnly fa-solid fa-ellipsis"></i>
+    </button>
+
     <img class="header__logo" src="/assets/img/logo2.png" alt="" />
 
-    <a routerLink="/" class="nav__link nav__link--home">Home</a>
-    <a routerLink="/register" class="nav__link nav__link--reg">Register</a>
+    <ul class="mobileOnly" *ngIf="isVisible">
+      <li *ngFor="let menu of navMenu">
+        <a
+          class="nav__link nav__link--home"
+          (click)="isVisible = !isVisible"
+          [routerLink]="menu.link"
+          >{{ menu.name }}</a
+        >
+      </li>
+    </ul>
+
+    <ul class="pcOnly">
+      <li *ngFor="let menu of navMenu">
+        <a class="nav__link nav__link--home" [routerLink]="menu.link">{{
+          menu.name
+        }}</a>
+      </li>
+    </ul>
   </nav>
 </header>
