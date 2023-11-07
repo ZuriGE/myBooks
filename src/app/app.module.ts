@@ -10,7 +10,8 @@ import { FormRegisterComponent } from './component/form-register/form-register.c
 import { RegisterComponent } from './pages/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { ProfileComponent } from './pages/profile/profile.component'
+import { ProfileComponent } from './pages/profile/profile.component';
+import { BooksComponent } from './pages/books/books.component'
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ProfileComponent } from './pages/profile/profile.component'
     FormRegisterComponent,
     RegisterComponent,
     ProfileComponent,
+    BooksComponent,
 
   ],
   imports: [

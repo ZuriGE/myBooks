@@ -12,7 +12,8 @@ export class HeaderComponent {
   navMenu = [
     {name:"Home", link:"/"},
     {name:"Register", link:"/register"},
-    {name:"Profile", link:"/profile"}
+    {name:"Profile", link:"/profile"},
+    {name:"Books", link:"/books"}
    
   ]
   

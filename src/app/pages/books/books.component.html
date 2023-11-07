@@ -1,0 +1,26 @@
+<main>
+  <ul class="container--ext">
+    <li class="book" *ngFor="let book of books">
+      <div class="card">
+        <div class="img--cont">
+          <img src="{{ book.photo }}" alt="" />
+        </div>
+        <div class="title--container">
+          <h2>{{ book.title }}</h2>
+        </div>
+        <h3>- {{ book.author }} -</h3>
+        <p>{{ book.type }}</p>
+        <h4>Ref-{{ book.id_book }}</h4>
+
+        <button class="btn-buy">
+          <div class="price--container">
+            <span
+              ><strong>{{ book.price.toFixed(2) }} </strong>€</span
+            >
+            <i class="fa-solid fa-basket-shopping"></i>
+          </div>
+        </button>
+      </div>
+    </li>
+  </ul>
+</main>
