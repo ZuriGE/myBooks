@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --dark1: #001524;
+    --dark2: #445D48;
+    --light1: #d4d1ce;
+    --light2: #829285;
+    --bright1: #fd8945;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+    height: 100%;
+    background-color: var(--light1);
+}
