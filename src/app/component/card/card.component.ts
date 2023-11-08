@@ -8,7 +8,12 @@ import { Book } from 'src/app/models/book';
 })
 export class CardComponent {
   @Input () nBook: Book;
-  
+  @Output() bookEvent = new EventEmitter<Book>();
 
+  constructor(){}
+
+  xButtonClick(){
+    this.bookEvent.emit(this.nBook)
+  }
  
 }

@@ -1,7 +1,7 @@
 <main>
   <ul class="container--ext">
     <li class="book" *ngFor="let book of books">
-      <app-card [nBook]="book"></app-card>
+      <app-card [nBook]="book" (bookEvent)="deleteBook($event)"></app-card>
       <!-- <div class="card">
         <div class="img--cont">
           <img src="{{ book.photo }}" alt="" />

@@ -8,8 +8,6 @@ import { Book } from 'src/app/models/book';
 })
 export class BooksComponent {
   
-
-  
   books: Book[] = [
     new Book("El misterio de la cripta embrujada", "Tapa dura", "Eduardo Mendoza", 15.75, "/assets/img/book1.webp", 1),
     new Book("Ceniza en la boca", "Tapa blanda", "Brenda Navarro", 10.50, "/assets/img/book2.jpg", 2),
@@ -35,8 +33,11 @@ export class BooksComponent {
     new Book("El hombre hembra", "Tapa dura", "Joana Russ", 17.99, "/assets/img/book22.jpg", 22)
 ];
 
-deleteThisBook(book:Book){
+deletedBooks: Book[] = []
+
+deleteBook(book:Book){
   const index = this.books.indexOf(book);
+  this.deletedBooks.push(this.books[index])
   this.books.splice(index,1)
 
 }
