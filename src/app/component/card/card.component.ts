@@ -9,10 +9,6 @@ import { Book } from 'src/app/models/book';
 export class CardComponent {
   @Input () nBook: Book;
   
-  constructor(private cardComponent: CardComponent) {}
-  
-  xDelete():void{
-    this.cardComponent.deleteBook(this.nBook)
-  }
+
  
 }

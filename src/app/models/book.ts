@@ -1,7 +1,7 @@
-import { Output,EventEmitter } from "@angular/core";
+// import { Component, Output,EventEmitter } from "@angular/core";
 
 export class Book {
-    @Output() bookEvent = new EventEmitter<Book>();
+    // @Output() bookEvent = new EventEmitter<Book>();
     constructor (    
         public title: string,
         public type: string,
@@ -12,9 +12,10 @@ export class Book {
         public id_user?: number
     ) {}
 
-    sendCardInfo(){
-        let delBook:Book;
-        this.bookEvent.emit(delBook)
-      }
+    
+    // sendCardInfo(){
+    //     let delBook:Book;
+    //     this.bookEvent.emit(delBook)
+    //   }
       
 }
