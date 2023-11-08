@@ -36,6 +36,26 @@ h3 {
     background-image: url("/assets/img/home0.png");
     background-size: contain;
     background-blend-mode: darken;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+.img2 {
+    background-image: url("/assets/img/home1.jpg");
+    background-size: cover;
+
+}
+
+.img3 {
+    background-image: url("/assets/img/home3.jpg");
+    background-size: cover;
+    background-position-y: 80%
+}
+
+.img4 {
+    background-image: url("/assets/img/home4.jpg");
+    background-size: cover;
+
 }
 
 p {
@@ -124,7 +144,7 @@ h2 span {
     -webkit-overflow-scrolling: touch;
 }
 
-@media(min-width:769px) {
+@media(min-width: 980px) {
     .main {
         width: 80%;
         padding-bottom: 5rem;
@@ -148,7 +168,7 @@ h2 span {
     }
 
     .main h1 {
-        font-size: 8rem;
+        font-size: 5rem;
         display: block;
         text-align: end;
         padding-bottom: 0;
@@ -157,7 +177,7 @@ h2 span {
     }
 
     .main p {
-        font-size: 2rem;
+        font-size: 1.5rem;
         justify-self: center;
         align-self: center;
     }
@@ -177,27 +197,11 @@ h2 span {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        padding: 0 10rem;
+        padding: 0 8rem;
 
     }
 
-    .img2 {
-        background-image: url("/assets/img/home1.jpg");
-        background-size: cover;
 
-    }
-
-    .img3 {
-        background-image: url("/assets/img/home3.jpg");
-        background-size: cover;
-
-    }
-
-    .img4 {
-        background-image: url("/assets/img/home4.jpg");
-        background-size: cover;
-
-    }
 
     .separator {
         display: flex;
@@ -218,7 +222,7 @@ h2 span {
     }
 
     .aside {
-        width: 20%;
+        width: 30%;
         min-width: 350px;
         padding: 3rem;
         display: block;
@@ -260,4 +264,18 @@ h2 span {
         padding: 0.5rem
     }
 
+}
+
+@media(min-width: 1024px) {
+    main p {
+        font-size: 2rem;
+    }
+
+    .img--cont {
+        width: 70%;
+    }
+
+    .home__cont--ext {
+        padding: 0 6rem;
+    }
 }

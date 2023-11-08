@@ -1,7 +1,8 @@
 <main>
   <ul class="container--ext">
     <li class="book" *ngFor="let book of books">
-      <div class="card">
+      <app-card [nBook]="book" (bookEvent)="deleteThisBook($event)"></app-card>
+      <!-- <div class="card">
         <div class="img--cont">
           <img src="{{ book.photo }}" alt="" />
         </div>
@@ -20,7 +21,7 @@
             <i class="fa-solid fa-basket-shopping"></i>
           </div>
         </button>
-      </div>
+      </div> -->
     </li>
   </ul>
 </main>

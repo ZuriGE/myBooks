@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="img--cont">
+    <img src="{{ nBook.photo }}" alt="" />
+  </div>
+  <div class="title--container">
+    <h2>{{ nBook.title }}</h2>
+  </div>
+  <h3>- {{ nBook.author }} -</h3>
+  <p>{{ nBook.type }}</p>
+  <h4>Ref-{{ nBook.id_book }}</h4>
+
+  <button class="btn-buy">
+    <div class="price--container">
+      <span
+        ><strong>{{ nBook.price.toFixed(2) }} </strong>€</span
+      >
+      <i class="fa-solid fa-basket-shopping"></i>
+    </div>
+  </button>
+  <button class="btn-close" (click)="sendCardInfo()">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>

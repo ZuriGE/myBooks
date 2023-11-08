@@ -11,7 +11,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { BooksComponent } from './pages/books/books.component'
+import { BooksComponent } from './pages/books/books.component';
+import { CardComponent } from './component/card/card.component'
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { BooksComponent } from './pages/books/books.component'
     RegisterComponent,
     ProfileComponent,
     BooksComponent,
+    CardComponent,
 
   ],
   imports: [

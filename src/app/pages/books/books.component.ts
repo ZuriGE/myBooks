@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { Book } from 'src/app/models/book';
 
 @Component({
@@ -7,6 +7,9 @@ import { Book } from 'src/app/models/book';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent {
+  
+
+  
   books: Book[] = [
     new Book("El misterio de la cripta embrujada", "Tapa dura", "Eduardo Mendoza", 15.75, "/assets/img/book1.webp", 1),
     new Book("Ceniza en la boca", "Tapa blanda", "Brenda Navarro", 10.50, "/assets/img/book2.jpg", 2),
@@ -31,4 +34,15 @@ export class BooksComponent {
     new Book("Vamos a morir todos", "Edición de bolsillo", "Emily Austin", 15.25, "/assets/img/book21.jpg", 21),
     new Book("El hombre hembra", "Tapa dura", "Joana Russ", 17.99, "/assets/img/book22.jpg", 22)
 ];
+
+deleteThisBook(book:Book){
+  const index = this.books.indexOf(book);
+  this.books.splice(index,1)
+
+}
+
+
+
+
+;
 }
