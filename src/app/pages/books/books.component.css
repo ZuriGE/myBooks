@@ -3,7 +3,31 @@ main {
     justify-content: center;
 }
 
+.addNewBook {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    text-align: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
 
+.addNewBook:hover {
+    text-replace: scale(1.2)
+}
+
+.message {
+    width: 100%;
+
+    position: absolute;
+    padding-top: 3rem;
+    font-size: 3rem;
+    font-family: var(--serif);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 
 .container--ext {
 

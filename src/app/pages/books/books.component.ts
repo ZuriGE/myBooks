@@ -7,7 +7,9 @@ import { Book } from 'src/app/models/book';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent {
-  
+  addNewBook:Book = new Book("NUEVO LIBRO","","Pulsa para añadir", 0,  "/assets/img/newBook.jpg")
+
+  // books:Book[] = []
   books: Book[] = [
     new Book("El misterio de la cripta embrujada", "Tapa dura", "Eduardo Mendoza", 15.75, "/assets/img/book1.webp", 1),
     new Book("Ceniza en la boca", "Tapa blanda", "Brenda Navarro", 10.50, "/assets/img/book2.jpg", 2),
@@ -43,7 +45,4 @@ deleteBook(book:Book){
 }
 
 
-
-
-;
 }

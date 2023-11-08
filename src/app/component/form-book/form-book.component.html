@@ -1,0 +1,33 @@
+<div class="form--container">
+  <h2>Nuevo libro</h2>
+  <hr />
+  <h3>Completa los siguientes campos registrar un nuevo libro</h3>
+  <div class="image">
+    <img src="/assets/img/form.jpg" alt="" />
+  </div>
+  <form action="">
+    <input class="inputTitle" type="text" Placeholder="Título" #title />
+    <input class="inputAuthor" type="text" Placeholder="Autor/a" #author />
+    <select class="deco" name="inputType" id="" #type placeholder="escoger">
+      <option hidden selected>Escoge una opción</option>
+      <option value="Tapa dura">Tapa dura</option>
+      <option value="Tapa blanda">Tapa blanda</option>
+      <option value="Edición de bolsillo">Edición de bolsillo</option>
+    </select>
+
+    <!-- <input
+      class="inputImage"
+      type="number"
+      Placeholder="Número de referencia"
+      value="{{ newBook.book_id }}"
+    /> -->
+    <input class="inputImage" type="number" Placeholder="Precio" #price />
+    <input
+      class="inputImage"
+      type="text"
+      Placeholder="url de la imagen"
+      #photo
+    />
+  </form>
+  <button>Enviar</button>
+</div>

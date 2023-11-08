@@ -21,7 +21,7 @@
     background-color: var(--light2);
     width: 70vw;
     aspect-ratio: 1/1.5;
-    padding: 0 1.5rem;
+    padding: 0 1.5rem 0.5rem;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@
     display: flex;
     justify-content: center;
     position: relative;
-    width: 60%;
+    /* width: 60%; */
     justify-self: center;
     align-self: center;
     border-radius: 5px;
@@ -127,6 +127,42 @@
     background-color: var(--dark2);
 }
 
+
+.even .btn-buy {
+
+    background-color: var(--bright1);
+}
+
+.even .btn-buy i,
+.even .btn-buy span {
+    color: var(--dark1);
+}
+
+.newBook {
+    background-color: var(--dark1);
+    transition: all linear 0.5s;
+}
+
+.newBook h2,
+.newBook h3,
+.newBook p {
+    color: var(--light1)
+}
+
+.newBook h4,
+.newBook button {
+    display: none;
+}
+
+.newBook:hover {
+    background-color: var(--bright1);
+}
+
+.newBook:hover h2,
+.newBook:hover h3,
+.newBook:hover p {
+    color: var(--dark1)
+}
 
 @media (min-width:980px) {
     .card {

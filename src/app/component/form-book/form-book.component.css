@@ -1,0 +1,102 @@
+.form--container {
+    /* width: minmax(360px, auto); */
+    width: 100%;
+    min-width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.8rem 0.5rem;
+    background-color: var(--light2);
+    ;
+    border-radius: 20px;
+    align-items: center;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+
+select option {
+    color: var(--dark);
+    background-color: var(--light1);
+    border: none;
+}
+
+.image {
+    width: 360px;
+    height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image img {
+    mix-blend-mode: multiply;
+}
+
+form select,
+form input {
+    height: 40px;
+    width: 350px;
+    border: none;
+    outline: none;
+    box-shadow: -1px -2px #a3a3a3;
+    border-radius: 5px;
+    padding: 0 2rem;
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    transition: all linear 0.2s;
+    background-color: var(--light1);
+}
+
+form input:focus {
+    /* background-color: aqua; */
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+button {
+    margin-top: 1.2rem;
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 180px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: ease-in all 0.5s
+}
+
+button:hover {
+    width: 350px;
+    border-radius: 5px;
+    font-weight: 600;
+    /* color: var(--light1); */
+    background-color: var(--bright1);
+}
+
+h2 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2rem;
+    color: var(--dark1);
+    padding: 0.5rem 0;
+}
+
+hr {
+    width: 30%;
+    height: 1px;
+    border-color: black
+}
+
+h3 {
+    padding-top: 0.8rem;
+}

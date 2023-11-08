@@ -7,6 +7,8 @@ import { Book } from 'src/app/models/book';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent {
+  @Input() even:boolean;
+  @Input() newBook:boolean;
   @Input () nBook: Book;
   @Output() bookEvent = new EventEmitter<Book>();
 

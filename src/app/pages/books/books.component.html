@@ -1,27 +1,19 @@
 <main>
   <ul class="container--ext">
-    <li class="book" *ngFor="let book of books">
-      <app-card [nBook]="book" (bookEvent)="deleteBook($event)"></app-card>
-      <!-- <div class="card">
-        <div class="img--cont">
-          <img src="{{ book.photo }}" alt="" />
-        </div>
-        <div class="title--container">
-          <h2>{{ book.title }}</h2>
-        </div>
-        <h3>- {{ book.author }} -</h3>
-        <p>{{ book.type }}</p>
-        <h4>Ref-{{ book.id_book }}</h4>
-
-        <button class="btn-buy">
-          <div class="price--container">
-            <span
-              ><strong>{{ book.price.toFixed(2) }} </strong>€</span
-            >
-            <i class="fa-solid fa-basket-shopping"></i>
-          </div>
-        </button>
-      </div> -->
+    <li class="book">
+      <button class="addNewBook">
+        <app-card [nBook]="addNewBook" [newBook]="true"></app-card>
+      </button>
+    </li>
+    <li class="book" *ngFor="let book of books; let even = even">
+      <app-card
+        [nBook]="book"
+        (bookEvent)="deleteBook($event)"
+        [even]="even"
+      ></app-card>
     </li>
   </ul>
+  <div *ngIf="books.length === 0" class="message">
+    No hay libros para mostrar
+  </div>
 </main>
