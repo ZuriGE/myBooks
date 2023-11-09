@@ -1,10 +1,12 @@
 <main>
   <ul class="container--ext">
+    <!-- libro ficticio para maquetar la forma de añadir un libro -->
     <li class="book">
-      <button class="addNewBook">
-        <app-card [nBook]="addNewBook" [newBook]="true"></app-card>
+      <button class="templateNewBook" (click)="formVisible = !formVisible">
+        <app-card [nBook]="templateNewBook" [newBook]="true"></app-card>
       </button>
     </li>
+    <!-- listado de libros en el array books -->
     <li class="book" *ngFor="let book of books; let even = even">
       <app-card
         [nBook]="book"
@@ -15,5 +17,18 @@
   </ul>
   <div *ngIf="books.length === 0" class="message">
     No hay libros para mostrar
+  </div>
+  <!-- formato añadir libro -->
+  <div class="form-container--ext" *ngIf="formVisible">
+    <div class="form-container--int">
+      <app-form-book
+        class="addBookForm"
+        (addBookEvent)="registerNewBook($event)"
+      >
+      </app-form-book>
+      <button class="btn-close" (click)="formVisible = !formVisible">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
   </div>
 </main>

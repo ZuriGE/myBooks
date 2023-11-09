@@ -7,7 +7,10 @@ import { Book } from 'src/app/models/book';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent {
-  addNewBook:Book = new Book("NUEVO LIBRO","","Pulsa para añadir", 0,  "/assets/img/newBook.jpg")
+formVisible:Boolean = false;
+
+//libro ficticio para dar formato al botón
+templateNewBook:Book = new Book("NUEVO LIBRO","","Pulsa para añadir", 0,  "/assets/img/newBook.jpg")
 
   // books:Book[] = []
   books: Book[] = [
@@ -43,6 +46,13 @@ deleteBook(book:Book){
   this.books.splice(index,1)
 
 }
+
+registerNewBook(book:Object){
+  let bookToAdd:Book = book[Object.keys(book)[0]]
+  this.formVisible = book[Object.keys(book)[1]]
+  this.books.push(bookToAdd)
+}
+
 
 
 }

@@ -13,7 +13,8 @@ import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { BooksComponent } from './pages/books/books.component';
 import { CardComponent } from './component/card/card.component';
-import { FormBookComponent } from './component/form-book/form-book.component'
+import { FormBookComponent } from './component/form-book/form-book.component';
+import { RefTemplatePipe } from './pipes/ref-template.pipe'
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { FormBookComponent } from './component/form-book/form-book.component'
     BooksComponent,
     CardComponent,
     FormBookComponent,
+    RefTemplatePipe,
 
   ],
   imports: [

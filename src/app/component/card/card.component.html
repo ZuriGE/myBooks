@@ -7,7 +7,7 @@
   </div>
   <h3>- {{ nBook.author }} -</h3>
   <p>{{ nBook.type }}</p>
-  <h4>Ref-{{ nBook.id_book }}</h4>
+  <h4>{{ nBook.id_book | refTemplate }}</h4>
 
   <button class="btn-buy">
     <div class="price--container">
