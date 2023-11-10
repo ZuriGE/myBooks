@@ -3,7 +3,7 @@
   <hr />
   <h3>Completa los siguientes campos registrar un nuevo libro</h3>
   <div class="image">
-    <img src="/assets/img/form.jpg" alt="" />
+    <img src="/assets/img/form-book.png" alt="" />
   </div>
   <form action="">
     <input class="inputTitle" type="text" Placeholder="Título" #title />
@@ -15,21 +15,21 @@
       <option value="Edición de bolsillo">Edición de bolsillo</option>
     </select>
 
-    <!-- <input
-      class="inputImage"
+    <input class="inputPrice" type="number" Placeholder="Precio" #price />
+    <input
+      class="inputBoodId"
       type="number"
-      Placeholder="Número de referencia"
-      value="{{ newBook.book_id }}"
-    /> -->
-    <input class="inputImage" type="number" Placeholder="Precio" #price />
+      Placeholder="ID del libro"
+      #id_book
+    />
     <input
       class="inputImage"
       type="text"
       Placeholder="url de la imagen"
       #photo
     />
+    <button (click)="sendNewBook(title, type, author, price, id_book, photo)">
+      Enviar
+    </button>
   </form>
-  <button (click)="sendNewBook(title, type, author, price, photo)">
-    Enviar
-  </button>
 </div>

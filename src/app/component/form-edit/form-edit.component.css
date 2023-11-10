@@ -7,11 +7,13 @@
     justify-content: center;
     align-items: center;
     padding: 1.8rem 0.5rem;
-    background-color: var(--light2);
+    background-color: var(--bright1);
     ;
     border-radius: 20px;
     align-items: center;
 }
+
+
 
 form {
     width: 100%;
@@ -43,6 +45,15 @@ select option {
     mix-blend-mode: multiply;
 }
 
+.bookImg {
+
+    width: 280px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.5);
+    padding-top: 0.5rem;
+}
+
+.selectInit,
+.fakeInput,
 form select,
 form input {
     height: 40px;
@@ -90,6 +101,7 @@ h2 {
     font-size: 2rem;
     color: var(--dark1);
     padding: 0.5rem 0;
+    text-align: center;
 }
 
 hr {
@@ -100,4 +112,20 @@ hr {
 
 h3 {
     padding-top: 0.8rem;
+}
+
+.currentBookInfo {
+    background-color: var(--light2);
+    margin-bottom: 2rem
+}
+
+.currentBookInfo h3 {
+    padding-bottom: 0.5rem
+}
+
+.fakeInput {
+    display: flex;
+    align-items: center;
+    background-color: rgb(163, 163, 163);
+    box-shadow: -1px -2px #807f7f;
 }

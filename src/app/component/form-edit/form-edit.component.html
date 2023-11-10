@@ -1,0 +1,93 @@
+<div class="currentBookInfo form--container" *ngIf="selectedBookIndex !== -1">
+  <h3>Libro seleccionado:</h3>
+  <h2>
+    {{ books[selectedBookIndex].title }}
+  </h2>
+  <hr />
+  <h3>Autor/a: {{ books[selectedBookIndex].author }}</h3>
+  <h3>Tipo: {{ books[selectedBookIndex].type }}</h3>
+  <h3>Precio: {{ books[selectedBookIndex].price }}€</h3>
+  <h3>URL: {{ books[selectedBookIndex].photo }}</h3>
+  <img
+    class="bookImg"
+    *ngIf="selectedBookIndex !== -1"
+    src="{{ books[selectedBookIndex].photo }}"
+    alt=""
+  />
+</div>
+
+<div class="form--container">
+  <h2>Editar libro</h2>
+
+  <hr />
+  <h3 *ngIf="selectedBookIndex == -1">
+    Selecciona el libro que quieres editar
+  </h3>
+  <h3 *ngIf="selectedBookIndex !== -1">
+    Modifica los campos que quieras actualizar
+  </h3>
+
+  <div class="image">
+    <img src="/assets/img/form-book.png" alt="" />
+  </div>
+
+  <!-- <input
+      name="book"
+      list="IdList"
+      placeholder="Libro a editar"
+      [(ngModel)]="selectedBook"
+    />
+    <datalist id="IdList">
+      <select>
+        <option *ngFor="let book of books" [value]="book.id_book">
+          {{ book.id_book | refTemplate }}: {{ book.title }}
+        </option>
+      </select>
+    </datalist> -->
+
+  <select [(ngModel)]="selectedBookIndex" name="select" class="selectInit">
+    <option
+      *ngFor="let book of books; let i = index"
+      [value]="i"
+      (change)="onSelect(i)"
+    >
+      {{ book.id_book | refTemplate }}: {{ book.title }}
+    </option>
+  </select>
+
+  <form action="" *ngIf="selectedBookIndex !== -1">
+    <input type="text" Placeholder="Editar título" #title />
+
+    <input
+      class="inputAuthor"
+      type="text"
+      Placeholder="Editar autor/a"
+      #author
+    />
+
+    <select class="deco" name="inputType" id="" #type placeholder="escoger">
+      <option hidden selected>
+        {{ books[selectedBookIndex].type }}
+      </option>
+      <option value="Tapa dura">Tapa dura</option>
+      <option value="Tapa blanda">Tapa blanda</option>
+      <option value="Edición de bolsillo">Edición de bolsillo</option>
+    </select>
+
+    <input class="inputPrice" type="number" Placeholder="Nuevo precio" #price />
+
+    <input
+      class="inputImage"
+      type="text"
+      Placeholder="url de la imagen"
+      #photo
+    />
+    <div class="fakeInput">
+      <span>{{ books[selectedBookIndex].id_book | refTemplate }}</span>
+    </div>
+
+    <button (click)="editBook(title, author, type, price, photo)">
+      Enviar
+    </button>
+  </form>
+</div>

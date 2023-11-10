@@ -20,8 +20,19 @@
 
 }
 
-html {
+html,
+body,
+app-root {
     height: 100%;
+}
+
+html {
+    padding-top: 70px;
     background-color: var(--light1);
     overflow-x: hidden;
+}
+
+body {
+    margin-bottom: 0;
+    margin-top: 0;
 }

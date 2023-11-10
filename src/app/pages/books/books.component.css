@@ -1,6 +1,8 @@
 main {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .templateNewBook {
@@ -19,7 +21,7 @@ main {
 .message {
     width: 100%;
 
-    position: absolute;
+
     padding-top: 3rem;
     font-size: 3rem;
     font-family: var(--serif);

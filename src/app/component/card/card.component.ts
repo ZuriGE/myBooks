@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from 'src/app/models/book';
+import { BooksService } from 'src/app/shared/books.service';
 
 @Component({
   selector: 'app-card',
@@ -10,12 +11,15 @@ export class CardComponent {
   @Input() even:boolean;
   @Input() newBook:boolean;
   @Input () nBook: Book;
-  @Output() bookEvent = new EventEmitter<Book>();
+  @Output() bookEvent = new EventEmitter<number>();
 
-  constructor(){}
+  constructor(public BooksService:BooksService){}
 
   xButtonClick(){
-    this.bookEvent.emit(this.nBook)
+    console.log(this.nBook.id_book)
+    this.BooksService.delete(this.nBook.id_book)
+
+    // this.bookEvent.emit(this.nBook.id_book)
   }
  
 }

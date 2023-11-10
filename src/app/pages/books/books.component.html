@@ -1,8 +1,12 @@
 <main>
+  <div *ngIf="books.length === 0" class="message">
+    No hay libros para mostrar
+  </div>
   <ul class="container--ext">
     <!-- libro ficticio para maquetar la forma de añadir un libro -->
     <li class="book">
-      <button class="templateNewBook" (click)="formVisible = !formVisible">
+      <!-- <button class="templateNewBook" (click)="formVisible = !formVisible"> -->
+      <button class="templateNewBook" (click)="goToAddBook()">
         <app-card [nBook]="templateNewBook" [newBook]="true"></app-card>
       </button>
     </li>
@@ -15,11 +19,8 @@
       ></app-card>
     </li>
   </ul>
-  <div *ngIf="books.length === 0" class="message">
-    No hay libros para mostrar
-  </div>
   <!-- formato añadir libro -->
-  <div class="form-container--ext" *ngIf="formVisible">
+  <!-- <div class="form-container--ext" *ngIf="formVisible">
     <div class="form-container--int">
       <app-form-book
         class="addBookForm"
@@ -30,5 +31,5 @@
         <i class="fa-solid fa-xmark"></i>
       </button>
     </div>
-  </div>
+  </div> -->
 </main>

@@ -14,7 +14,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { BooksComponent } from './pages/books/books.component';
 import { CardComponent } from './component/card/card.component';
 import { FormBookComponent } from './component/form-book/form-book.component';
-import { RefTemplatePipe } from './pipes/ref-template.pipe'
+import { RefTemplatePipe } from './pipes/ref-template.pipe';
+import { AddBookComponent } from './pages/add-book/add-book.component';
+import { UpdateBookComponent } from './pages/update-book/update-book.component';
+import { FormEditComponent } from './component/form-edit/form-edit.component'
 
 
 @NgModule({
@@ -30,6 +33,9 @@ import { RefTemplatePipe } from './pipes/ref-template.pipe'
     CardComponent,
     FormBookComponent,
     RefTemplatePipe,
+    AddBookComponent,
+    UpdateBookComponent,
+    FormEditComponent,
 
   ],
   imports: [
