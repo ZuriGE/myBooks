@@ -10,7 +10,7 @@ import { Book } from 'src/app/models/book';
 })
 export class FormBookComponent {
  
-  @Output() addBookEvent = new EventEmitter<Object>();
+  @Output() addBookEvent = new EventEmitter<Book>();
 
   newBook:Book = new Book("","","",0,"",0)
   sendNewBook(title, type, author, price, photo){
@@ -20,7 +20,7 @@ export class FormBookComponent {
     this.newBook.price = parseInt(price.value);
     this.newBook.photo = photo.value;
     console.log("emite añadir")
-    this.addBookEvent.emit({objectBook:this.newBook, objectBool: false})
+    this.addBookEvent.emit(this.newBook)
   }
 
   

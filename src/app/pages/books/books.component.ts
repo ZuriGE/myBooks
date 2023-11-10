@@ -47,9 +47,10 @@ deleteBook(book:Book){
 
 }
 
-registerNewBook(book:Object){
-  let bookToAdd:Book = book[Object.keys(book)[0]]
-  this.formVisible = book[Object.keys(book)[1]]
+registerNewBook(book:Book){
+  let bookToAdd:Book = book
+  this.formVisible = false
+  // this.formVisible = book[Object.keys(book)[1]]
   this.books.push(bookToAdd)
 }
 
