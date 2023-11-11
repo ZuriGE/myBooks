@@ -12,9 +12,19 @@ import { BooksService } from 'src/app/shared/books.service';
 export class SearchBarComponent {
   @Output() filterById = new EventEmitter<number>()
   constructor(public BooksService:BooksService){}
-  getBookId(search){
+
+  secondPlaceholder:boolean = false
+
+  getBookId(searchValue):void{
+    
     let id:number;
-    isNaN(parseInt(search.value))? id = 0:id = parseInt(search.value)
+    if (isNaN(parseInt(searchValue))){
+      id = 0
+    } else{
+      id = parseInt(searchValue);
+      
+    }
+    
     this.filterById.emit(id)
 
   }

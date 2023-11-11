@@ -17,7 +17,8 @@ import { FormBookComponent } from './component/form-book/form-book.component';
 import { RefTemplatePipe } from './pipes/ref-template.pipe';
 import { AddBookComponent } from './pages/add-book/add-book.component';
 import { UpdateBookComponent } from './pages/update-book/update-book.component';
-import { FormEditComponent } from './component/form-edit/form-edit.component'
+import { FormEditComponent } from './component/form-edit/form-edit.component';
+import { SearchBarComponent } from './component/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FormEditComponent } from './component/form-edit/form-edit.component'
     AddBookComponent,
     UpdateBookComponent,
     FormEditComponent,
+    SearchBarComponent,
 
   ],
   imports: [

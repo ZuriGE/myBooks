@@ -42,21 +42,31 @@ export class BooksService {
 
    //devuelve un libro buscado por su número de id
    public getOne(id_book:number):Book{
-    const bookFilteredById = this.books.filter((value, index) =>{
-      value.id_book==id_book
-    })
-    return bookFilteredById[0]
+    const index = this.books.findIndex((b)=> b.id_book ===id_book)
+    const bookFilteredById:Book = this.books[index]
+    return bookFilteredById
    } 
 
    //añade un libro
    add(book:Book):void{
-    this.books.push(book)
+    const index = this.books.findIndex((b)=> b.id_book ===book.id_book)
+    if(index ==-1){
+      this.books.push(book)
+      window.alert(`El libro '${book.title}' se ha añadido correctamente.`)
+    }else{
+      const proposedId = 1+ this.books.reduce((currentBook, nextBook) => (currentBook.id_book > nextBook.id_book ? currentBook : nextBook)).id_book;
+
+      window.alert(`ERROR: El libro '${book.title}' NO se ha añadido porque la ID '${book.id_book}' ya está en uso.\nPuedes volver a intentarlo cambiando la ID por '${proposedId}'`)
+    }
+
+
    }
 
-    //editar libro:pendiente hasta que tenga el formulario de editar
+    //editar libro
     edit(book:Book):Boolean{
       const index = this.books.findIndex((b)=> b.id_book ===book.id_book)
       this.books.splice(index, 1, book);
+      window.alert(`Los datos del libro '${book.title}' han sido actualizados`)
       return true
 
     }

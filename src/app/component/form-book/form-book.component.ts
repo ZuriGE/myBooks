@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -28,16 +29,19 @@ export class FormBookComponent {
   // }
 
     sendNewBook(title, type, author, price, id_book, photo){
+
     this.newBook.title = title.value;
     this.newBook.type = type.value;
     this.newBook.author = author.value;
     this.newBook.price = parseInt(price.value);
     this.newBook.id_book = parseInt(id_book.value);
     this.newBook.photo = photo.value;
-    console.log(this.newBook)
-
+    
+    
     // this.addBookEvent.emit(this.newBook)
     this.BooksService.add(this.newBook)
+
+    
 
   }
   

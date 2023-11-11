@@ -3,6 +3,7 @@ import { Book } from 'src/app/models/book';
 import { Router } from '@angular/router';
 import { BooksService } from 'src/app/shared/books.service';
 
+
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -18,6 +19,7 @@ formVisible:Boolean = false;
 templateNewBook:Book = new Book("NUEVO LIBRO","","Pulsa para añadir", 0,  "/assets/img/newBook.jpg")
 
 books:Book [] = this.BooksService.getAll()
+
 
   
 deletedBooks: Book[] = []
@@ -46,5 +48,19 @@ registerNewBook(book:Book){
 goToAddBook(){
   this.router.navigate(['/add-book'])
 }
+
+filter(id:number):void{
+  
+  if (id==0){
+    this.books = this.BooksService.getAll()
+  }else if(this.books.findIndex((b)=> b.id_book ===id) ==-1){
+    window.alert("No se ha encontrado nigún libro con esa ID")
+  }else{
+    this.books=[];
+    this.books.push(this.BooksService.getOne(id))
+  }
+ 
+}
+
 
 }

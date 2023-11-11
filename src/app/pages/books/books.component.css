@@ -5,6 +5,11 @@ main {
     flex-direction: column;
 }
 
+.search-container {
+    padding: 2rem 0;
+    width: 360px
+}
+
 .templateNewBook {
     border: none;
     outline: none;

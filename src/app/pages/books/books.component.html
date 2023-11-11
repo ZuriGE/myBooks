@@ -1,18 +1,12 @@
 <main>
   <div class="search-container">
-    <app-search-bar></app-search-bar>
+    <app-search-bar (filterById)="filter($event)"></app-search-bar>
   </div>
   <div *ngIf="books.length === 0" class="message">
     No hay libros para mostrar
   </div>
+
   <ul class="container--ext">
-    <!-- libro ficticio para maquetar la forma de añadir un libro -->
-    <li class="book">
-      <!-- <button class="templateNewBook" (click)="formVisible = !formVisible"> -->
-      <button class="templateNewBook" (click)="goToAddBook()">
-        <app-card [nBook]="templateNewBook" [newBook]="true"></app-card>
-      </button>
-    </li>
     <!-- listado de libros en el array books -->
     <li class="book" *ngFor="let book of books; let even = even">
       <app-card
@@ -20,6 +14,13 @@
         (bookEvent)="deleteBook($event)"
         [even]="even"
       ></app-card>
+    </li>
+    <!-- libro ficticio para maquetar la forma de añadir un libro -->
+    <li class="book">
+      <!-- <button class="templateNewBook" (click)="formVisible = !formVisible"> -->
+      <button class="templateNewBook" (click)="goToAddBook()">
+        <app-card [nBook]="templateNewBook" [newBook]="true"></app-card>
+      </button>
     </li>
   </ul>
   <!-- formato añadir libro -->

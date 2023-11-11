@@ -15,6 +15,7 @@
 
     color: var(--dark2);
     transition: all linear 0.5s;
+    transform-origin: right top;
 
 }
 
@@ -30,6 +31,7 @@
     cursor: pointer;
     font-size: 20px;
     transition: all linear 0.5s;
+    transform-origin: left top;
 }
 
 .search:hover .search-int {
