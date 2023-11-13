@@ -5,20 +5,20 @@ main {
     justify-content: center;
     align-items: center;
     border-radius: 2px solid red;
-    padding: 5rem 0;
+    padding: 3rem 0;
 }
 
 .cont {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 2fr 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.7fr 0.7fr 0.7fr 0.7fr 1fr;
     grid-template-areas:
 
-        "h1" "h1" "pic" "pic" "nom" "ap" "em" "edit" "url" "nomC" "apC" "emC" "b";
+        "h1" "pic" "nom" "ap" "em" "edit" "url" "nomC" "apC" "emC" "b";
     /* gap: 20px; */
     background-color: white;
-    padding: 0 3rem 3rem;
-    width: 70%;
+    padding: 0 1rem 1rem;
+    width: 90%;
     align-items: center;
     border-radius: 10px;
 }
@@ -29,9 +29,12 @@ main {
     text-align: center;
 }
 
+
+
+
 button {
     height: 40px;
-    width: 25%;
+    width: 70%;
     justify-self: center;
     font-size: 1.2rem;
     border: none;
@@ -45,7 +48,7 @@ button:hover {
     background-color: var(--dark1);
     color: var(--bright1);
     font-weight: 600;
-    width: 50%;
+    width: 80%;
     border-radius: 5px;
 }
 
@@ -53,7 +56,7 @@ button:hover {
 
 h1 {
     grid-area: h1;
-    font-size: 3rem;
+    font-size: 2rem;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: var(--dark1);
     text-align: center;
@@ -69,6 +72,7 @@ h1 {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
 
 }
 
@@ -82,36 +86,27 @@ h1 {
 
 }
 
+
+
 .img--container h2 {
     line-height: 1.8rem;
 
     font-family: var(--marker);
     padding-top: 2rem;
     color: var(--dark1);
-    text-align: right;
+    text-align: center;
 
-    font-size: 3rem;
+    font-size: 2.5rem;
     transition: ease all 0.5s;
 }
 
-.img--container:hover {}
-
-.img--container:hover h2 {
-
-    color: var(--bright1);
-    /* font-size: 2.2rem; */
-}
-
-.img--container:hover img {
-    filter: grayscale(0%);
-    transform: rotate(-5deg);
-}
 
 h3 {
     grid-area: edit;
     font-family: var(--marker);
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
+    padding-top: 1rem;
 
 }
 
@@ -155,9 +150,10 @@ span {
 }
 
 
+
 input {
     height: 40px;
-    width: clamp(200px, 450px, 700px);
+    width: 90%;
     border: none;
     outline: none;
     box-shadow: -1px -2px #a3a3a3;
@@ -188,8 +184,12 @@ input:focus ::placeholder {
 
 @media(min-width:1024px) {
 
-    .cont {
+    .main {
+        padding: 5rem 0;
+    }
 
+    .cont {
+        width: 70%;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 1.5fr 2.5fr 1fr 1fr 1fr 1fr 1fr;
@@ -201,5 +201,55 @@ input:focus ::placeholder {
             "ap ap apC apC"
             "em em emC emC"
             "b b b b";
+        padding: 0 3rem 3rem;
+    }
+
+    .img--container {
+
+        max-width: 550px;
+    }
+
+    .img--container h2 {
+        text-align: right;
+
+        font-size: 3rem;
+    }
+
+    .img--container:hover {}
+
+    .img--container:hover h2 {
+
+        color: var(--bright1);
+        /* font-size: 2.2rem; */
+    }
+
+    .img--container:hover img {
+        filter: grayscale(0%);
+        transform: rotate(-5deg);
+    }
+
+    h1 {
+
+        font-size: 3rem;
+    }
+
+    input {
+
+        width: clamp(200px, 450px, 700px);
+        max-width: 700px;
+    }
+
+    h3 {
+        font-size: 3rem;
+    }
+
+    button {
+
+        width: 25%;
+    }
+
+    button:hover {
+
+        width: 50%;
     }
 }
