@@ -16,6 +16,7 @@ export class HeaderComponent {
     {name:"Books", link:"/books"},
     {name:"Add", link:"/add-book"},
     {name:"Update", link:"/update-book"},
+    {name:"Login", link:"/login"},
    
   ]
   

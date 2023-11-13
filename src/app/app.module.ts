@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
@@ -19,6 +19,9 @@ import { AddBookComponent } from './pages/add-book/add-book.component';
 import { UpdateBookComponent } from './pages/update-book/update-book.component';
 import { FormEditComponent } from './component/form-edit/form-edit.component';
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FormLoginComponent } from './component/form-login/form-login.component';
+
 
 
 @NgModule({
@@ -38,13 +41,16 @@ import { SearchBarComponent } from './component/search-bar/search-bar.component'
     UpdateBookComponent,
     FormEditComponent,
     SearchBarComponent,
+    LoginComponent,
+    FormLoginComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
