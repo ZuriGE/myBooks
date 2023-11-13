@@ -17,11 +17,19 @@
           'is-invalid': (emailId.dirty || emailId.touched) && emailId.invalid
         }"
         required
+        email
       />
+
       <i
         *ngIf="(emailId.dirty || emailId.touched) && emailId.invalid"
         class="fa-solid fa-circle-exclamation invalid-feedback"
       ></i>
+
+      <i
+        *ngIf="emailId.dirty && emailId.touched && emailId.valid"
+        class="fa-solid fa-circle-check"
+      ></i>
+
       <div
         *ngIf="(emailId.dirty || emailId.touched) && emailId.invalid"
         class="invalid-feedback"
@@ -43,6 +51,10 @@
         }"
         required
       />
+      <i
+        *ngIf="passwordId.dirty && passwordId.touched && passwordId.valid"
+        class="fa-solid fa-circle-check"
+      ></i>
       <i
         *ngIf="(passwordId.dirty || passwordId.touched) && passwordId.invalid"
         class="fa-solid fa-circle-exclamation invalid-feedback"

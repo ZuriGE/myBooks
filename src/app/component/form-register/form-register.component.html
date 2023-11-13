@@ -4,17 +4,241 @@
   <h3>Completa los siguientes campos para darte de alta</h3>
   <div class="image"></div>
 
-  <form action="">
-    <input class="inputFName" type="text" Placeholder="Nombre" id="nombre" />
-    <input class="inputName" type="text" Placeholder="Apellidos" />
-    <input class="inputMail" type="text" Placeholder="email" />
-    <input class="inputPW" type="text" Placeholder="Contraseña" />
-    <input
-      class="inputPWRepeat"
-      type="text"
-      Placeholder="Repite tu contraseña"
-    />
-    <input class="inputImage" type="text" Placeholder="Imagen" />
+  <form [formGroup]="myForm">
+    <div class="form-group posRelative">
+      <label>Nombre </label>
+      <input
+        required
+        class="form-control"
+        type="text"
+        Placeholder="Nombre"
+        formControlName="name"
+        [ngClass]="{
+          'is-invalid':
+            (myForm.get('name').dirty || myForm.get('name').touched) &&
+            !myForm.get('name').valid
+        }"
+      />
+      <div *ngIf="myForm.get('name').valid">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <i
+        *ngIf="
+          (myForm.get('name').dirty || myForm.get('name').touched) &&
+          !myForm.get('name').valid
+        "
+        class="fa-solid fa-circle-exclamation invalid-feedback"
+      ></i>
+      <div
+        *ngIf="
+          (myForm.get('name').dirty || myForm.get('name').touched) &&
+          !myForm.get('name').valid
+        "
+        class="invalid-feedback"
+      >
+        Este campo es obligatorio
+      </div>
+    </div>
+    <div class="form-group posRelative">
+      <label>Apellidos</label>
+      <input
+        class="form-control"
+        type="text"
+        Placeholder="Apellidos"
+        formControlName="surname"
+        [ngClass]="{
+          'is-invalid':
+            (myForm.get('surname').dirty || myForm.get('surname').touched) &&
+            !myForm.get('surname').valid
+        }"
+      />
+      <div *ngIf="myForm.get('surname').valid">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <i
+        *ngIf="
+          (myForm.get('surname').dirty || myForm.get('surname').touched) &&
+          !myForm.get('surname').valid
+        "
+        class="fa-solid fa-circle-exclamation invalid-feedback"
+      ></i>
+      <div
+        *ngIf="
+          (myForm.get('surname').dirty || myForm.get('surname').touched) &&
+          !myForm.get('surname').valid
+        "
+        class="invalid-feedback"
+      >
+        Este campo es obligatorio
+      </div>
+    </div>
+    <div class="form-group posRelative">
+      <label>email</label>
+      <input
+        class="form-control"
+        type="email"
+        Placeholder="email"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            (myForm.get('email').dirty || myForm.get('email').touched) &&
+            !myForm.get('email').valid
+        }"
+      />
+      <div *ngIf="myForm.get('email').valid">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+
+      <div
+        *ngIf="
+          (myForm.get('email').dirty || myForm.get('email').touched) &&
+          !myForm.get('email').valid
+        "
+      >
+        <i class="fa-solid fa-circle-exclamation invalid-feedback"></i>
+        <div *ngIf="myForm.get('email').errors.required">
+          Este campo es obligatorio
+        </div>
+
+        <div *ngIf="myForm.get('email').errors.email">
+          Formato de email incorrecto
+        </div>
+      </div>
+    </div>
+    <div class="form-group posRelative">
+      <label
+        >Contraseña
+        <button (click)="showPw()" class="btn-password">
+          <i *ngIf="!showPassword" class="fa-regular fa-eye"></i>
+          <i *ngIf="showPassword" class="fa-regular fa-eye-slash"></i>
+        </button>
+      </label>
+      <input
+        #password
+        class="form-control"
+        [type]="showPassword ? 'text' : 'password'"
+        Placeholder="Contraseña"
+        formControlName="password"
+        [ngClass]="{
+          'is-invalid':
+            (myForm.get('password').dirty || myForm.get('password').touched) &&
+            !myForm.get('password').valid
+        }"
+      />
+      <div *ngIf="myForm.get('password').valid">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <div
+        *ngIf="
+          (myForm.get('password').dirty || myForm.get('password').touched) &&
+          !myForm.get('password').valid
+        "
+      >
+        <i class="fa-solid fa-circle-exclamation invalid-feedback"></i>
+        <div *ngIf="myForm.get('password').errors.required">
+          Este campo es obligatorio
+        </div>
+
+        <div *ngIf="myForm.get('password').errors.minlength">
+          la contraseña debe tener al menos 8 caracteres
+        </div>
+
+        <div
+          *ngIf="
+            !myForm.get('password').errors.required &&
+            !myForm.get('password').errors.minlength &&
+            myForm.get('password').errors?.passwordUnsafe
+          "
+        >
+          La contraseña debe tener al menos una mayúscula, una minúscula y un
+          número.
+        </div>
+      </div>
+    </div>
+    <div class="form-group posRelative">
+      <label
+        >Repetir contraseña
+        <button (click)="showPwRepeat()" class="btn-password">
+          <i *ngIf="!showPasswordRep" class="fa-regular fa-eye"></i>
+          <i *ngIf="showPasswordRep" class="fa-regular fa-eye-slash"></i>
+        </button>
+      </label>
+      <input
+        #passwordRep
+        class="form-control"
+        [type]="showPasswordRep ? 'text' : 'password'"
+        Placeholder="Repite tu contraseña"
+        formControlName="passwordRepeat"
+        [ngClass]="{
+          'is-invalid':
+            (myForm.get('passwordRepeat').dirty ||
+              myForm.get('passwordRepeat').touched) &&
+            !myForm.get('passwordRepeat').valid
+        }"
+      />
+      <div *ngIf="myForm.get('passwordRepeat').valid">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <div
+        *ngIf="
+          (myForm.get('passwordRepeat').dirty ||
+            myForm.get('passwordRepeat').touched) &&
+          !myForm.get('passwordRepeat').valid
+        "
+      >
+        <i class="fa-solid fa-circle-exclamation invalid-feedback"></i>
+        <div *ngIf="myForm.get('passwordRepeat').errors.required">
+          Este campo es obligatorio
+        </div>
+
+        <div
+          *ngIf="
+            !myForm.get('passwordRepeat').errors.required &&
+            myForm.get('passwordRepeat').errors?.matchPassword
+          "
+        >
+          Las contraseñas no coinciden
+        </div>
+      </div>
+    </div>
+    <div class="form-group posRelative">
+      <label>Foto</label>
+      <input
+        class="form-control"
+        type="text"
+        Placeholder="url de la imagen"
+        formControlName="photo"
+      />
+
+      <div *ngIf="myForm.get('photo').valid">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <div
+        *ngIf="
+          (myForm.get('photo').dirty || myForm.get('photo').touched) &&
+          !myForm.get('photo').valid
+        "
+      >
+        <div *ngIf="myForm.get('photo').valid">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <i
+          *ngIf="
+            (myForm.get('photo').dirty || myForm.get('photo').touched) &&
+            !myForm.get('photo').valid
+          "
+          class="fa-solid fa-circle-exclamation invalid-feedback"
+        ></i>
+
+        <div *ngIf="myForm.get('photo').errors.required">
+          Este campo es obligatorio
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="button" (click)="register()" [disabled]="myForm.invalid">
+        Registrarse
+      </button>
+    </div>
   </form>
-  <button>Registrarse</button>
 </div>

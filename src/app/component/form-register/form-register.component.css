@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     padding: 1.8rem 0.5rem;
-    background-color: var(--bright1);
+    background-color: var(--light2);
     border-radius: 20px;
     align-items: center;
 }
@@ -25,7 +25,7 @@ form {
 .image {
     width: 360px;
     height: 360px;
-    background-color: var(--bright1);
+    background-color: var(--light2);
     background-image: url("/assets/img/form.jpg");
     background-blend-mode: multiply;
 }
@@ -50,7 +50,7 @@ form input:focus {
     background-color: #fff;
 }
 
-button {
+.button {
     margin-top: 1.2rem;
     border: none;
     outline: none;
@@ -62,11 +62,29 @@ button {
     transition: ease-in all 0.5s
 }
 
-button:hover {
+.button:hover {
     width: 350px;
     border-radius: 5px;
     color: var(--light1);
     background-color: var(--dark1);
+}
+
+.button:active {
+    width: 350px;
+    border-radius: 5px;
+    color: var(--bright1);
+    font-weight: 600;
+    transform: scale(0.98);
+    transition: all linear 0.1s;
+
+}
+
+.button:visited {
+
+    color: var(--bright1);
+    font-weight: 600;
+
+
 }
 
 h2 {
@@ -85,3 +103,73 @@ hr {
 h3 {
     padding-top: 0.8rem;
 }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    width: 350px;
+    text-align: left;
+    display: flex;
+
+    justify-content: space-between
+}
+
+form input.is-invalid {
+
+    box-shadow: -1px -2px rgb(226, 113, 8);
+    background-color: #dddddd;
+
+}
+
+.posRelative {
+    position: relative;
+}
+
+.fa-circle-exclamation {
+    position: absolute;
+    right: 20px;
+    top: 56px;
+    /* transform: translateY(calc(-40%)); */
+    font-size: 1.5rem;
+    color: rgb(226, 113, 8)
+}
+
+.form-group div {
+    max-width: 350px;
+}
+
+.fa-circle-check,
+.fa-circle-exclamation {
+    position: absolute;
+    right: 20px;
+    top: 56px;
+    /* transform: translateY(calc(-40%)); */
+    font-size: 1.5rem;
+    color: rgb(226, 113, 8)
+}
+
+.fa-circle-check {
+    color: green
+}
+
+.btn-password {
+    background-color: transparent;
+    width: 20px;
+    height: 16px;
+    margin: 0 5px;
+    outline: none;
+    border: none;
+    cursor: pointer
+}
+
+.btn-password:hover {
+    color: var(--bright1)
+}
+
+.btn-password {}

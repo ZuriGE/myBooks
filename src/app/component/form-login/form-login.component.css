@@ -98,10 +98,14 @@ form {
 .fa-solid {
     position: absolute;
     right: 20px;
-    top: 50%;
+    top: 56px;
     transform: translateY(calc(-50% + 0.9rem)), translateX();
     font-size: 1.5rem;
     color: rgb(226, 113, 8)
+}
+
+.fa-circle-check {
+    color: green
 }
 
 button {
