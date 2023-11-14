@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
 import { BooksComponent } from '../pages/books/books.component';
 
+import swal from 'sweetalert2'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -53,10 +55,26 @@ export class BooksService {
     if(index ==-1){
       this.books.push(book)
       window.alert(`El libro '${book.title}' se ha añadido correctamente.`)
+      swal.fire({
+        title: `Libro añadido`,
+        text: `El libro '${book.title}' ha sido añadido a la base de datos.`,
+        icon: "success",
+        confirmButtonColor: '#fd8945',
+        background:'#d4d1ce',
+        iconColor: 'green'
+      });
     }else{
       const proposedId = 1+ this.books.reduce((currentBook, nextBook) => (currentBook.id_book > nextBook.id_book ? currentBook : nextBook)).id_book;
 
-      window.alert(`ERROR: El libro '${book.title}' NO se ha añadido porque la ID '${book.id_book}' ya está en uso.\nPuedes volver a intentarlo cambiando la ID por '${proposedId}'`)
+      swal.fire({
+        title: `ERROR:\nEl libro '${book.title}' NO se ha añadido`,
+        text: `La ID '${book.id_book}' ya está en uso. Puedes volver a intentarlo cambiando la ID por '${proposedId}'`,
+        icon: "error",
+        confirmButtonColor: '#fd8945',
+        background:'#d4d1ce',
+        iconColor: 'red'
+      });
+
     }
 
 
@@ -66,7 +84,15 @@ export class BooksService {
     edit(book:Book):Boolean{
       const index = this.books.findIndex((b)=> b.id_book ===book.id_book)
       this.books.splice(index, 1, book);
-      window.alert(`Los datos del libro '${book.title}' han sido actualizados`)
+      swal.fire({
+        title: `Libro editado`,
+        text: `Los datos del libro '${book.title}' se han actualizado correctamente.`,
+        icon: "success",
+        confirmButtonColor: '#fd8945',
+        background:'#d4d1ce',
+        iconColor: 'green'
+      });
+      // window.alert(`Los datos del libro '${book.title}' han sido actualizados`)
       return true
 
     }

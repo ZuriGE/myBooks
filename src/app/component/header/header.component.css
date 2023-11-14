@@ -145,4 +145,11 @@ ul.mobileOnly {
         animation: navLinkHover 0.5s linear;
     }
 
+    a.active {
+        color: var(--dark1);
+        background-color: var(--light1);
+        border-left: 8px solid var(--bright1);
+        border-right: 8px solid var(--dark2);
+    }
+
 }

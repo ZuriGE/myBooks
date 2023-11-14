@@ -19,9 +19,13 @@
 
     <ul class="pcOnly">
       <li *ngFor="let menu of navMenu">
-        <a class="nav__link nav__link--home" [routerLink]="menu.link">{{
-          menu.name
-        }}</a>
+        <a
+          class="nav__link nav__link--home"
+          [routerLink]="menu.link"
+          (click)="activeNav(menu.link)"
+          [class.active]="menu.link === activeLink"
+          >{{ menu.name }}</a
+        >
       </li>
     </ul>
   </nav>

@@ -19,6 +19,13 @@ export class HeaderComponent {
     {name:"Login", link:"/login"},
    
   ]
+
+  activeLink='';
+
+  activeNav(link){
+    this.activeLink=link
+    
+  }
   
 }
 
