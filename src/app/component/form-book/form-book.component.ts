@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 
 
@@ -15,7 +15,7 @@ export class FormBookComponent {
  
   @Output() addBookEvent = new EventEmitter<Book>();
 
-  newBook:Book = new Book("","","",0,"",0)
+  newBook:Book = new Book(null, "", null, null, null, null)
   // sendNewBook(title, type, author, price, id_book, photo){
   //   this.newBook.title = title.value;
   //   this.newBook.type = type.value;
@@ -41,9 +41,11 @@ export class FormBookComponent {
     // this.addBookEvent.emit(this.newBook)
     this.BooksService.add(this.newBook)
 
-    
-
-  }
+      }
   
+      addBook(form:NgForm){
+        this.BooksService.add(this.newBook)
+      }
+
 
 }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class FormEditComponent {
 
   books:Book [] = this.BooksService.getAll()
   bookToEdit:Book;
+  bookToUpdate:Book = new Book(null, null, null, null, null, null)
 
  
   selectedBookIndex: number = -1; // Inicializado con un valor que no corresponderá a ningún índice válido
@@ -43,5 +45,21 @@ export class FormEditComponent {
     this.BooksService.edit(this.bookToEdit)
 
   }
+
+
+  updateBook(form:NgForm){
+    this.bookToUpdate
+    this.bookToEdit = this.books[this.selectedBookIndex]
+
+    this.bookToEdit.title = this.bookToUpdate.title != null? this.bookToUpdate.title:this.bookToEdit.title;
+    this.bookToEdit.type = this.bookToUpdate.type != null? this.bookToUpdate.type:this.bookToEdit.type;
+    this.bookToEdit.author = this.bookToUpdate.author != null? this.bookToUpdate.author:this.bookToEdit.author;
+    this.bookToEdit.price = this.bookToUpdate.price != null? this.bookToUpdate.price:this.bookToEdit.price;
+    this.bookToEdit.photo = this.bookToUpdate.photo != null? this.bookToUpdate.photo:this.bookToEdit.photo;
+
+    this.BooksService.edit(this.bookToEdit)
+
+  }
+
     
 }

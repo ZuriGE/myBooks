@@ -54,7 +54,7 @@ export class BooksService {
     const index = this.books.findIndex((b)=> b.id_book ===book.id_book)
     if(index ==-1){
       this.books.push(book)
-      window.alert(`El libro '${book.title}' se ha añadido correctamente.`)
+     
       swal.fire({
         title: `Libro añadido`,
         text: `El libro '${book.title}' ha sido añadido a la base de datos.`,

@@ -5,31 +5,67 @@
   <div class="image">
     <img src="/assets/img/form-book.png" alt="" />
   </div>
-  <form action="">
-    <input class="inputTitle" type="text" Placeholder="Título" #title />
-    <input class="inputAuthor" type="text" Placeholder="Autor/a" #author />
-    <select class="deco" name="inputType" id="" #type placeholder="escoger">
-      <option hidden selected>Escoge una opción</option>
+  <form #bookForm="ngForm" (ngSubmit)="addBook(bookForm)">
+    <input
+      class="inputTitle"
+      type="text"
+      placeholder="Título"
+      #title
+      name="title"
+      [(ngModel)]="newBook.title"
+      required
+    />
+    <input
+      class="inputAuthor"
+      type="text"
+      placeholder="Autor/a"
+      #author
+      name="author"
+      [(ngModel)]="newBook.author"
+      required
+    />
+    <select
+      class="deco"
+      name="inputType"
+      #type
+      name="type"
+      [(ngModel)]="newBook.type"
+      required
+    >
+      <option value="" disabled selected>Escoge una opción</option>
       <option value="Tapa dura">Tapa dura</option>
       <option value="Tapa blanda">Tapa blanda</option>
       <option value="Edición de bolsillo">Edición de bolsillo</option>
     </select>
 
-    <input class="inputPrice" type="number" Placeholder="Precio" #price />
+    <input
+      class="inputPrice"
+      type="number"
+      placeholder="Precio"
+      #price
+      name="price"
+      [(ngModel)]="newBook.price"
+      required
+    />
     <input
       class="inputBoodId"
       type="number"
-      Placeholder="ID del libro"
+      placeholder="ID del libro"
       #id_book
+      name="id_book"
+      [(ngModel)]="newBook.id_book"
+      required
     />
     <input
       class="inputImage"
       type="text"
-      Placeholder="url de la imagen"
+      placeholder="url de la imagen"
       #photo
+      name="photo"
+      [(ngModel)]="newBook.photo"
+      required
     />
-    <button (click)="sendNewBook(title, type, author, price, id_book, photo)">
-      Enviar
-    </button>
+    <!-- <button (click)="sendNewBook(title, type, author, price, id_book, photo)"> -->
+    <button>Enviar</button>
   </form>
 </div>

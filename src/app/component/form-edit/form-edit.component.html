@@ -55,17 +55,41 @@
     </option>
   </select>
 
-  <form action="" *ngIf="selectedBookIndex !== -1">
-    <input type="text" Placeholder="Editar título" #title />
+  <form
+    action=""
+    *ngIf="selectedBookIndex !== -1"
+    #editForm="ngForm"
+    (ngSubmit)="updateBook(editForm)"
+  >
+    <input
+      type="text"
+      Placeholder="Editar título"
+      #title
+      name="title"
+      [(ngModel)]="bookToUpdate.title"
+      required
+    />
 
     <input
       class="inputAuthor"
       type="text"
       Placeholder="Editar autor/a"
       #author
+      name="author"
+      [(ngModel)]="bookToUpdate.author"
+      required
     />
 
-    <select class="deco" name="inputType" id="" #type placeholder="escoger">
+    <select
+      class="deco"
+      name="inputType"
+      id=""
+      #type
+      placeholder="escoger"
+      name="type"
+      [(ngModel)]="bookToUpdate.type"
+      required
+    >
       <option hidden selected>
         {{ books[selectedBookIndex].type }}
       </option>
@@ -74,20 +98,30 @@
       <option value="Edición de bolsillo">Edición de bolsillo</option>
     </select>
 
-    <input class="inputPrice" type="number" Placeholder="Nuevo precio" #price />
+    <input
+      class="inputPrice"
+      type="number"
+      Placeholder="Nuevo precio"
+      #price
+      name="price"
+      [(ngModel)]="bookToUpdate.price"
+      required
+    />
 
     <input
       class="inputImage"
       type="text"
       Placeholder="url de la imagen"
       #photo
+      name="photo"
+      [(ngModel)]="bookToUpdate.photo"
+      required
     />
     <div class="fakeInput">
       <span>{{ books[selectedBookIndex].id_book | refTemplate }}</span>
     </div>
 
-    <button (click)="editBook(title, author, type, price, photo)">
-      Enviar
-    </button>
+    <!-- <button (click)="editBook(title, author, type, price, photo)"> -->
+    <button>Enviar</button>
   </form>
 </div>
