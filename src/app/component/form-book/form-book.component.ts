@@ -2,6 +2,8 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { Response } from 'src/app/models/response';
+import swal from 'sweetalert2'
 
 
 
@@ -38,14 +40,53 @@ export class FormBookComponent {
     this.newBook.photo = photo.value;
     
     
-    // this.addBookEvent.emit(this.newBook)
+
     this.BooksService.add(this.newBook)
 
       }
-  
+  //comentado para usar API
+      // addBook(form:NgForm){
+      //   this.BooksService.add(this.newBook)
+      // }
+
+
       addBook(form:NgForm){
-        this.BooksService.add(this.newBook)
+
+        
+          this.BooksService.add(this.newBook).subscribe((res:Response)=>{
+          
+          console.log(res)
+          if (res.error === false) {
+            console.log('OK')
+            
+            swal.fire({
+                    title: `Libro añadido`,
+                    text: `El libro '${this.newBook.title}' ha sido añadido a la base de datos.`,
+                    icon: "success",
+                    confirmButtonColor: '#fd8945',
+                    background:'#d4d1ce',
+                    iconColor: 'green'
+                  })
+          } else if(res.message===`id already exists`){{//
+            console.log('fallo')
+            swal.fire({
+                    title: `ERROR:\nEl libro '${this.newBook.title}' NO se ha añadido`,
+                    text: `La ID '${this.newBook.id_book}' ya está en uso. Puedes volver a intentarlo cambiando la ID por '${res.data[0].id_book}'`,
+                    icon: "error",
+                    confirmButtonColor: '#fd8945',
+                    background:'#d4d1ce',
+                    iconColor: 'red'
+                  })
+          }}else{
+            console.log('error')
+          }
+            
+          
+        })
+        }
+
+        
       }
 
 
-}
+

@@ -21,6 +21,8 @@ import { FormEditComponent } from './component/form-edit/form-edit.component';
 import { SearchBarComponent } from './component/search-bar/search-bar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormLoginComponent } from './component/form-login/form-login.component';
+import { HttpClientModule  } from '@angular/common/http';
+
 
 
 
@@ -51,6 +53,7 @@ import { FormLoginComponent } from './component/form-login/form-login.component'
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

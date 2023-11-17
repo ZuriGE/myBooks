@@ -2,6 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { BooksService } from 'src/app/shared/books.service';
 import { NgForm } from '@angular/forms';
+import { Response } from 'src/app/models/response';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import swal from 'sweetalert2'
 
 
 @Component({
@@ -10,16 +14,45 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./form-edit.component.css']
 })
 export class FormEditComponent {
-  constructor(public BooksService:BooksService ) {}
+  constructor(public BooksService:BooksService,private route:ActivatedRoute  ) {}
 
 
 
-  books:Book [] = this.BooksService.getAll()
+  // books:Book [] = this.BooksService.getAll()
+  // books = this.BooksService.getAll()
+  public books:Book[] 
+  ngOnInit(){
+    this.route.paramMap.subscribe(params => {
+      
+      this.routeChange();
+  
+    });
+  
+    
+  }
+  
+  routeChange(){
+    console.log('carga')
+    this.getAllBooks()
+  }
+
   bookToEdit:Book;
   bookToUpdate:Book = new Book(null, null, null, null, null, null)
 
  
   selectedBookIndex: number = -1; // Inicializado con un valor que no corresponderá a ningún índice válido
+
+  getAllBooks(){
+    this.BooksService.getAll().subscribe((res:Response)=>{
+      if (res.error === false) {
+        this.books = res.data;
+      } else {
+        console.log('Error');
+      }
+    })
+  }
+
+
 
   onSelect(bookIndex: number): void {
     console.log(bookIndex)
@@ -42,7 +75,7 @@ export class FormEditComponent {
     this.bookToEdit.photo = photo.value !== ""? photo.value:this.bookToEdit.photo;
 
     console.log(this.bookToEdit)
-    this.BooksService.edit(this.bookToEdit)
+    // this.BooksService.edit(this.bookToEdit)
 
   }
 
@@ -57,7 +90,29 @@ export class FormEditComponent {
     this.bookToEdit.price = this.bookToUpdate.price != null? this.bookToUpdate.price:this.bookToEdit.price;
     this.bookToEdit.photo = this.bookToUpdate.photo != null? this.bookToUpdate.photo:this.bookToEdit.photo;
 
-    this.BooksService.edit(this.bookToEdit)
+    this.BooksService.edit(this.bookToEdit).subscribe((res:Response)=>{
+      console.log(res.error)
+      if(res.error){
+        console.log('ERROR')
+      }else{
+        this.selectedBookIndex=-1
+        
+       
+           swal.fire({
+          title: `Información actualizada`,
+          text: `Los datos del libro '${this.bookToEdit.title}' han sido modificados`,
+          icon: "success",
+          confirmButtonColor: '#fd8945',
+          background:'#d4d1ce',
+          iconColor: 'green'
+        })
+       
+        
+        
+      }
+    })
+
+    // this.BooksService.edit(this.bookToEdit)
 
   }
 
