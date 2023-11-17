@@ -95,7 +95,7 @@ export class FormEditComponent {
       if(res.error){
         console.log('ERROR')
       }else{
-        this.selectedBookIndex=-1
+        
         
        
            swal.fire({
@@ -105,6 +105,8 @@ export class FormEditComponent {
           confirmButtonColor: '#fd8945',
           background:'#d4d1ce',
           iconColor: 'green'
+        }).then(()=>{
+          this.selectedBookIndex=-1
         })
        
         
