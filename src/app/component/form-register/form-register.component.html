@@ -45,27 +45,28 @@
         class="form-control"
         type="text"
         Placeholder="Apellidos"
-        formControlName="surname"
+        formControlName="last_name"
         [ngClass]="{
           'is-invalid':
-            (myForm.get('surname').dirty || myForm.get('surname').touched) &&
-            !myForm.get('surname').valid
+            (myForm.get('last_name').dirty ||
+              myForm.get('last_name').touched) &&
+            !myForm.get('last_name').valid
         }"
       />
-      <div *ngIf="myForm.get('surname').valid">
+      <div *ngIf="myForm.get('last_name').valid">
         <i class="fa-solid fa-circle-check"></i>
       </div>
       <i
         *ngIf="
-          (myForm.get('surname').dirty || myForm.get('surname').touched) &&
-          !myForm.get('surname').valid
+          (myForm.get('last_name').dirty || myForm.get('last_name').touched) &&
+          !myForm.get('last_name').valid
         "
         class="fa-solid fa-circle-exclamation invalid-feedback"
       ></i>
       <div
         *ngIf="
-          (myForm.get('surname').dirty || myForm.get('surname').touched) &&
-          !myForm.get('surname').valid
+          (myForm.get('last_name').dirty || myForm.get('last_name').touched) &&
+          !myForm.get('last_name').valid
         "
         class="invalid-feedback"
       >

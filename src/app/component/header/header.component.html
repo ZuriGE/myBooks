@@ -6,8 +6,18 @@
 
     <img class="header__logo" src="/assets/img/logo2.png" alt="" />
 
-    <ul class="mobileOnly" *ngIf="isVisible">
-      <li *ngFor="let menu of navMenu">
+    <ul class="mobileOnly" *ngIf="isVisible && !loggedIn">
+      <li *ngFor="let menu of navMenu1">
+        <a
+          class="nav__link nav__link--home"
+          (click)="isVisible = !isVisible"
+          [routerLink]="menu.link"
+          >{{ menu.name }}</a
+        >
+      </li>
+    </ul>
+    <ul class="mobileOnly" *ngIf="isVisible && loggedIn">
+      <li *ngFor="let menu of navMenu2">
         <a
           class="nav__link nav__link--home"
           (click)="isVisible = !isVisible"
@@ -17,8 +27,20 @@
       </li>
     </ul>
 
-    <ul class="pcOnly">
-      <li *ngFor="let menu of navMenu">
+    <ul class="pcOnly" *ngIf="!loggedIn">
+      <li *ngFor="let menu of navMenu1">
+        <a
+          class="nav__link nav__link--home"
+          [routerLink]="menu.link"
+          (click)="activeNav(menu.link)"
+          [class.active]="menu.link === activeLink"
+          >{{ menu.name }}</a
+        >
+      </li>
+    </ul>
+
+    <ul class="pcOnly" *ngIf="loggedIn">
+      <li *ngFor="let menu of navMenu2">
         <a
           class="nav__link nav__link--home"
           [routerLink]="menu.link"

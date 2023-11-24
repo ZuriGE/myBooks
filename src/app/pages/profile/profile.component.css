@@ -1,4 +1,4 @@
-main {
+form {
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -11,10 +11,13 @@ main {
 .cont {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.7fr 0.7fr 0.7fr 0.7fr 1fr;
+    grid-template-rows: 1fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr 1fr;
     grid-template-areas:
 
-        "h1" "pic" "nom" "ap" "em" "edit" "url" "nomC" "apC" "emC" "b";
+        "h1" "pic" "nom" "ap" "em" "edit" "url" "nomC" "apC" "emC" "pwC" "b";
+
+
+
     /* gap: 20px; */
     background-color: white;
     padding: 0 1rem 1rem;
@@ -22,6 +25,8 @@ main {
     align-items: center;
     border-radius: 10px;
 }
+
+
 
 .msg {
     font-size: 1.5rem;
@@ -126,6 +131,10 @@ h3 {
     grid-area: emC;
 }
 
+.--pwC {
+    grid-area: pwC
+}
+
 .username {
     grid-area: nom;
 }
@@ -181,10 +190,13 @@ input:focus ::placeholder {
     color: var(--dark1)
 }
 
+input.ng-invalid.ng-touched.ng-dirty {
+    background-color: red;
+}
 
 @media(min-width:1024px) {
 
-    .main {
+    .form {
         padding: 5rem 0;
     }
 
@@ -192,14 +204,15 @@ input:focus ::placeholder {
         width: 70%;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1.5fr 2.5fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1.5fr 2.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-areas:
             "h1 h1 h1 h1"
             "pic pic edit edit"
             "pic pic url url"
-            "nom nom nomC nomC"
-            "ap ap apC apC"
-            "em em emC emC"
+            "pic pic nomC nomC"
+            "nom nom apC apC"
+            "ap ap emC emC"
+            "em em pwC pwC"
             "b b b b";
         padding: 0 3rem 3rem;
     }

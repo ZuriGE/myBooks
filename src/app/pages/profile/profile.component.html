@@ -1,4 +1,4 @@
-<main>
+<!-- <main>
   <div class="cont">
     <h1>Mi Perfil</h1>
     <div class="img--container">
@@ -36,11 +36,74 @@
       placeholder="Editar email"
       #new_email
     />
-    <button (click)="enviar(new_name, new_last_name, new_email, new_photo)">
+    <input
+      class="input --pwC"
+      type="text"
+      placeholder="Editar contraseña"
+      #new_password
+    />
+    <button
+      (click)="
+        enviar(new_name, new_last_name, new_email, new_photo, new_password)
+      "
+    >
       Cambiar datos
     </button>
   </div>
   <p class="msg" style.color="{{ myColor }}">
     {{ userUpdated }}
   </p>
-</main>
+</main> -->
+
+<form [formGroup]="myForm" class="form">
+  <div class="cont">
+    <h1>Mi Perfil</h1>
+    <div class="img--container">
+      <img src="{{ myUser.photo }}" alt="" />
+      <h2 class="nombre">{{ myUser.name }} {{ myUser.last_name }}</h2>
+    </div>
+    <span class="username"><strong>Nombre: </strong>{{ myUser.name }}</span>
+    <span class="username2"
+      ><strong>Apellidos: </strong>{{ myUser.last_name }}</span
+    >
+    <span class="mail"><strong>email: </strong>{{ myUser.email }}</span>
+    <h3>Editar Información</h3>
+
+    <input
+      class="input --url"
+      type="text"
+      placeholder="Cambia la url de tu foto"
+      formControlName="photo"
+      #new_photo
+    />
+    <input
+      class="input --nomC"
+      type="text"
+      placeholder="Editar nombre"
+      formControlName="name"
+    />
+
+    <input
+      class="input --apC"
+      type="text"
+      placeholder="Editar apellidos"
+      formControlName="last_name"
+    />
+    <input
+      class="input --emC"
+      type="text"
+      placeholder="Editar email"
+      formControlName="email"
+    />
+    <input
+      class="input --pwC"
+      type="text"
+      placeholder="Editar contraseña"
+      formControlName="password"
+    />
+    <button (click)="update()">Cambiar datos</button>
+  </div>
+  <p class="msg" style.color="{{ myColor }}">
+    {{ userUpdated }}
+  </p>
+</form>
