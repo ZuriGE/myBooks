@@ -1,12 +1,13 @@
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Book } from 'src/app/models/book';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BooksService } from 'src/app/shared/books.service';
 import { Response } from 'src/app/models/response';
 import { Observable } from 'rxjs';
-
-
+import { ChangeDetectorRef } from '@angular/core';
 import swal from 'sweetalert2';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/shared/user.service';
 
 
 @Component({
@@ -15,25 +16,27 @@ import swal from 'sweetalert2';
   styleUrls: ['./books.component.css'],
   
 })
-export class BooksComponent {
+export class BooksComponent implements OnInit {
   public books:Book[]
+  myUser = this.userService.user
+  id_user = this.myUser.id_user
+
  ngOnInit(){
   this.route.paramMap.subscribe(params => {
     
     this.routeChange();
 
   });
-
-  
+ 
 }
 
 routeChange(){
-  console.log('carga')
+  
   this.getAllBooks()
 }
 
 //meto apiService en el contructor para no liar con la forma de antes 
-constructor(private router:Router, public BooksService:BooksService, public apiService:BooksService, private route:ActivatedRoute ) {
+constructor(private router:Router, public BooksService:BooksService, public apiService:BooksService, private route:ActivatedRoute, private userService: UserService, private chnDetchangeDetector: ChangeDetectorRef ) {
   // this.apiService.books=null --> No sé que hace esta parte pero me da error
 }
 
@@ -43,94 +46,44 @@ formVisible:Boolean = false;
 templateNewBook:Book = new Book("NUEVO LIBRO","","Pulsa para añadir", 0,  "/assets/img/newBook.jpg")
 
 //con API
-// getAllBooks(): Observable<Object> {
-//   return this.BooksService.getAll();
-// }
+
 getAllBooks(){
-  this.BooksService.getAll().subscribe((res:Response)=>{
+  console.log("entra en books-component")
+  this.BooksService.getAll(this.id_user).subscribe((res:Response)=>{
     if (res.error === false) {
       this.books = res.data;
+      console.log(res.data)
     } else {
+      console.log(res.error)
+      console.log(res)
       console.log('Error');
     }
   })
 }
 
-filter(id:number){
-  console.log(id)
-  if(id===0){
-    this.getAllBooks()
-  }else{
-    this.BooksService.getOne(id).subscribe((res:Response)=>{
-    if (res.error === false) {
-      this.books = res.data;
-    } else {
-      swal.fire({
-        title: `ERROR:`,
-        text: `no se ha encontado nigún libro con ID '${id}' en la base de datos.`,
-        icon: "error",
-        confirmButtonColor: '#fd8945',
-        background:'#d4d1ce',
-        iconColor: 'red'
+  filter(id:number){
+    console.log(id)
+    if(id===0){
+      this.getAllBooks()
+    }else{
+      this.BooksService.getOne(this.id_user, id).subscribe((res:Response)=>{
+        if (res.error === false) {
+          this.books = res.data;
+        } else {
+          swal.fire({
+            title: `ERROR:`,
+            text: `no se ha encontado nigún libro con ID '${id}' en la base de datos.`,
+            icon: "error",
+            confirmButtonColor: '#fd8945',
+            background:'#d4d1ce',
+            iconColor: 'red'
+          })
+        }
       })
     }
-  })
-
   }
 
-  
-}
-
-
-
-  
-deletedBooks: Book[] = []
-
-// deleteBook(book:Book){
-//   const index = this.books.indexOf(book);
-//   this.deletedBooks.push(this.books[index])
-//   this.books.splice(index,1)
-
-// }
-deleteBook(id_book:number){
-this.apiService.delete(id_book).subscribe((res:Response)=>{
-  console.log(res)
-  
-    alert(res.message)
-  })
-}
-
-// deleteBook(id_book:number){
-//   console.log("books component funciona")
-//  this.BooksService.delete(id_book)
-//  this.books = this.BooksService.getAll()
-
-// }
-
-// registerNewBook(book:Book){
-//   let bookToAdd:Book = book
-//   this.formVisible = false
-//   // this.formVisible = book[Object.keys(book)[1]]
-//   // this.books.push(bookToAdd)
-// }
-
-//router link para ir al formulario de añadir libros
-goToAddBook(){
-  this.router.navigate(['/add-book'])
-}
-
-// filter(id:number):void{
-  
-//   if (id==0){
-//     // this.books = this.BooksService.getAll()
-//   // }else if(this.books.findIndex((b)=> b.id_book ===id) ==-1){
-//     window.alert("No se ha encontrado nigún libro con esa ID")
-//   }else{
-//     // this.books=[];
-//     // this.books.push(this.BooksService.getOne(id))
-//   }
- 
-// }
-
-
+  goToAddBook(){
+    this.router.navigate(['/add-book'])
+  }
 }

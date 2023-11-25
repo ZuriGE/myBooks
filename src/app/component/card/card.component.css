@@ -164,6 +164,11 @@
     color: var(--dark1)
 }
 
+.card.deleted {
+    position: absolute;
+    display: none;
+}
+
 @media (min-width:980px) {
     .card {
         width: 30vw;

@@ -6,6 +6,7 @@ import { Response } from 'src/app/models/response';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import swal from 'sweetalert2'
+import { UserService } from 'src/app/shared/user.service';
 
 
 @Component({
@@ -14,18 +15,15 @@ import swal from 'sweetalert2'
   styleUrls: ['./form-edit.component.css']
 })
 export class FormEditComponent {
-  constructor(public BooksService:BooksService,private route:ActivatedRoute  ) {}
+  myUser = this.userService.user
+  id_user = this.myUser.id_user
 
+  constructor(public BooksService:BooksService,private route:ActivatedRoute, private userService: UserService  ) {}
 
-
-  // books:Book [] = this.BooksService.getAll()
-  // books = this.BooksService.getAll()
   public books:Book[] 
   ngOnInit(){
     this.route.paramMap.subscribe(params => {
-      
       this.routeChange();
-  
     });
   
     
@@ -43,7 +41,7 @@ export class FormEditComponent {
   selectedBookIndex: number = -1; // Inicializado con un valor que no corresponderá a ningún índice válido
 
   getAllBooks(){
-    this.BooksService.getAll().subscribe((res:Response)=>{
+    this.BooksService.getAll(this.id_user).subscribe((res:Response)=>{
       if (res.error === false) {
         this.books = res.data;
       } else {
@@ -59,25 +57,15 @@ export class FormEditComponent {
     this.selectedBookIndex = bookIndex;}
 
   editBook(title:HTMLInputElement, author:HTMLInputElement, type:HTMLInputElement, price:HTMLInputElement, photo:HTMLInputElement):void{
-     
-  //   console.log('editBook function called');
-  // const titleValue = titleElement.value;
-  // console.log(titleValue);
-    
+
     this.bookToEdit = this.books[this.selectedBookIndex]
-    console.log(this.bookToEdit)
-    console.log(parseInt(price.value))
 
     this.bookToEdit.title = title.value != ""? title.value:this.bookToEdit.title;
     this.bookToEdit.type = type.value !== ""? type.value:this.bookToEdit.type;
     this.bookToEdit.author = author.value !== ""? author.value:this.bookToEdit.author;
     this.bookToEdit.price = price.value !== ""? parseInt(price.value):this.bookToEdit.price;
     this.bookToEdit.photo = photo.value !== ""? photo.value:this.bookToEdit.photo;
-
-    console.log(this.bookToEdit)
-    // this.BooksService.edit(this.bookToEdit)
-
-  }
+}
 
 
   updateBook(form:NgForm){
@@ -114,7 +102,7 @@ export class FormEditComponent {
       }
     })
 
-    // this.BooksService.edit(this.bookToEdit)
+
 
   }
 

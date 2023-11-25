@@ -1,4 +1,8 @@
-<div class="card" [ngClass]="{ even: even, newBook: newBook }">
+<div
+  class="card"
+  [ngClass]="{ even: even, newBook: newBook }"
+  [class.deleted]="bookDeleted"
+>
   <div class="img--cont">
     <img src="{{ nBook.photo }}" alt="" />
   </div>
@@ -12,7 +16,7 @@
   <button class="btn-buy">
     <div class="price--container">
       <span
-        ><strong>{{ nBook.price.toFixed(2) }} </strong>€</span
+        ><strong>{{ nBook.price }} </strong>€</span
       >
       <i class="fa-solid fa-basket-shopping"></i>
     </div>

@@ -23,7 +23,7 @@ export class FormLoginComponent implements OnInit {
 
     
     onSubmit(form:NgForm):void{
-      console.log("fomr login component")
+      
       this.userService.login(this.login).subscribe((res:ResUser)=>{
 
         if (res.error === false){
